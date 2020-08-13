@@ -1,0 +1,22 @@
+#files that should not be uploaded to the repository
+
+#vscode settings file
+*.vscode
+
+#build settings
+build/
+
+#developer settings
+devel/
+
+#catkin_workspace file
+*.catkin_workspace
+
+#cmake file specific to ROS version
+src/CMakeLists.txt
+
+#bag file contents
+bagfiles/*.bag
+
+#rogue bag files - oops
+*.bag
