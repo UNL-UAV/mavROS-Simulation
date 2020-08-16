@@ -183,6 +183,6 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-add_executable(takeoff_land_example src/offb_node.cpp)
-target_link_libraries(takeoff_land_example ${catkin_LIBRARIES})
-add_dependencies(takeoff_land_example ${catkin_EXPORTED_TARGETS})
+add_executable(takeoff_example src/offb_node.cpp)
+target_link_libraries(takeoff_example ${catkin_LIBRARIES})
+add_dependencies(takeoff_example ${catkin_EXPORTED_TARGETS})

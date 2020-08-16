@@ -19,7 +19,7 @@ If you have not used ROS before then I would suggest reading through and doing t
 A small preview of how this simulation works is in the diagram below:
 ![mavROS simulation layout](https://dev.px4.io/v1.9.0/assets/simulation/px4_sitl_overview.png)
 
-### Directions for installation
+### Directions for Installation
 
 -	First you should install ROS, you can use any version that you want to. This tutorial was written using ubuntu 20.04 and the newest realease of ROS, Noetic.
 -	You can find the instructions to install [ROS](http://wiki.ros.org/noetic/Installation)
@@ -50,4 +50,26 @@ sudo apt-get install libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad g
 -	Now you can run the simulation by using the command below (be sure you're in the Firmware directory that was pulled from Github). It is going to take a really long time to build the first time but afterwards it shouldn't take super long.
 ```
 make px4_sitl gazebo
+```
+
+### Directions for Running
+
+To understand how to run, it is best to understand the logic of how the simulation is running. Look at the diagram above one more time to try and understand it.
+Theres three different things that need to be running for the simulation to work. First you need to run the gazebo simulation and also connect it to the sitl px4 controller. Then you need to run ROS to create the connection and control the pixhawk. Then you need to run ROS nodes to populate certain topics to control the simulation.
+
+-   Run the gazebo simulation and run the sitl pixhawk.
+-   This needs to be done from the Firmware repository directory as all the make files for this command are there.
+```
+make px4_sitl gazebo
+```
+-   To run the ROS simulation you need to launch ROS and connect it to your computer, or you can connect it two whichever computer is running the px4 simulation.
+```
+roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"
+```
+-   Then you can run nodes to control your drone. At thsis point all the information between ROS and the sitl pixhawk should be working. This means that you can not run nodes to populate topics to control the drone. If you have not already built nodes, there is an example takeoff already supplied in the repository.
+-   To run the takeoff node you have to move to this repository, ..../mavROS-Simulation then run the commands below.
+```
+catkin_make
+source devel/setup.bash
+rosrun examples takeoff_example
 ```
