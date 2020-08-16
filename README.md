@@ -47,3 +47,7 @@ cd Firmware
 sudo apt-get install libprotobuf-dev libprotoc-dev protobuf-compiler libeigen3-dev libxml2-utils python-rospkg python-jinja2
 sudo apt-get install libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly -y
 ```
+-	Now you can run the simulation by using the command below (be sure you're in the Firmware directory that was pulled from Github). It is going to take a really long time to build the first time but afterwards it shouldn't take super long.
+```
+make px4_sitl gazebo
+```
