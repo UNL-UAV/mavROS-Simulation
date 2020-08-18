@@ -46,8 +46,48 @@ int main(int argc, char **argv){
     }
 
     PoseStamped pose;
-    pose.pose.position.x = ?;
-    pose.pose.position.x = ?;
-    pose.pose.position.z = ?;
+    pose.pose.position.x = 0;
+    pose.pose.position.x = 0;
+    pose.pose.position.z = 0;
+
+    //populate the topic a little bit before beginning the actual publishing, stops weird things
+    //from happening
+    for(int i = 0; ros::ok() && i < 100; ++i){
+        local_position_publisher.publish(pose);
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    SetMode offboard;
+    offboard.request.custom_mode = "OFFBOARD";
+
+    CommandBool arm;
+    arm.request.value = true;
+
+    ros::Time last_request = ros::Time::now();
+
+    while(ros::ok()){
+        if(current_state.mode != "OFFBOARD" && (ros::Time::now() - last_request > ros::Duration(5))){
+            if(set_mode_client.call(offboard) && offboard.response.mode_sent){
+                ROS_INFO("OFFBOARD enabled");
+            }
+            last_request = ros::Time::now();
+
+        } else {
+            if(!current_state.armed && (ros::Time::now() - last_request > ros::Duration(5))){
+                if(arming_client.call(arm) && arm.response.success){
+                    ROS_INFO("Vehicle is armed");
+                }
+                last_request = ros::Time::now();
+            }
+        }
+
+        local_position_publisher.publish(pose);
+
+        ros::spinOnce();
+        rate.sleep();
+    }
+
+    return 0;
 
 }
