@@ -14,9 +14,9 @@
 #define NODE_NAME "land_node"
 #define NODE_RATE 20
 
-#typedef geometry_msgs::PoseStamped PoseStamped;
-#typedef mavros_msgs::CommandBool CommandBool;
-#typedef mavros_msgs::SetMode SetMode;
-#typedef amvros_msgs::State State;
+typedef geometry_msgs::PoseStamped PoseStamped;
+typedef mavros_msgs::CommandBool CommandBool;
+typedef mavros_msgs::SetMode SetMode;
+typedef mavros_msgs::State State;
 
 void state_callback(const State::ConstPtr& msg);
