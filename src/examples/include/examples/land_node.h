@@ -19,3 +19,4 @@
 #typedef mavros_msgs::SetMode SetMode;
 #typedef amvros_msgs::State State;
 
+void state_callback(const State::ConstPtr& msg);
