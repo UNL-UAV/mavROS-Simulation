@@ -53,14 +53,17 @@ int main(int argc, char **argv){
         rate.sleep();
     }
 
+    //sets the mode to offboard
     SetMode offboard;
     offboard.request.custom_mode = "OFFBOARD";
 
+    //arms the vehicle
     CommandBool arm;
     arm.request.value = true;
 
     ros::Time last_request = ros::Time::now();
 
+    //checks to see if the px4 is armed in offboard, if it is then send the necessary message
     while(ros::ok()){
         if(current_state.mode != "OFFBOARD" && (ros::Time::now() - last_request > ros::Duration(5))){
             if(set_mode_client.call(offboard) && offboard.response.mode_sent){

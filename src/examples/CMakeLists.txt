@@ -7,6 +7,10 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+catkin_package(
+  CATKIN_DEPENDS
+)
+
 include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(takeoff_example src/offb_node.cpp)
