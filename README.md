@@ -52,6 +52,11 @@ sudo apt-get install libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad g
 ```
 make px4_sitl gazebo
 ```
+- Now after the all of the code is done compiling you can go ahead and clone this repository if you haven't already.
+- This repository contains all of the example code that is used in the simulation. It is a catkin workspace that you can add to and also has examples that you can run using ROS.
+```
+git clone https://github.com/UNL-UAV/mavROS-Simulation.git
+```
 
 ### Directions for Running
 
