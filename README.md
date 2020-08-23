@@ -28,7 +28,7 @@ A small preview of how this simulation works is in the diagram below:
 ```
 sudo apt-get install ros-version-mavros ros-version-mavros-extras
 ```
--	Replace version above with your version of mavros. for example if you are using noetic, use *ros-version-mavros*
+-	Replace version above with your version of mavros. for example if you are using noetic, use *ros-noetic-mavros*. If you don't know then you can use ```rosversion -d```
 -	Next you are going to need to get the geagraphic lib, you need this for mavros so that you can send long/lat. The command is below:
 ```
 wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
