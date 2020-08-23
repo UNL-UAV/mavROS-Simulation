@@ -39,7 +39,7 @@ sudo ./install_geographiclib_datasets.sh
 -	The px4 firmware is what is need to simulate the flight controller, and ROS is what is going to be controlling the simulated flight controller.
 -	To install the px4 firmware you can fork the repository from our github page or just pull it if you aren't planning on messing with the firmware code, the command is below:
 ```
-git clone git@github.com:UNL-UAV/Firmware.git
+git clone https://github.com/UNL-UAV/Firmware.git
 cd Firmware
 ```
 -	next you are going to have to install some package dependencies so that you can make the simulation px4 flight controller, please run the commands below to be able to build.
