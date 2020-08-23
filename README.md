@@ -49,6 +49,14 @@ sudo apt-get install libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad g
 ```
 -	Now you can run the simulation by using the command below (be sure you're in the Firmware directory that was pulled from Github). It is going to take a really long time to build the first time but afterwards it shouldn't take super long.
 -   Also there might be errors that come up because of some other dependencies that weren't included in the installation process, they should all be explicit instructions to install a certain dependency, you should be able to follow the error and resolve it.
+- You are going to need to also install a bunch of python dependencies using pip, you can install all of them by using the commands below:
+```
+pip3 install --user toml
+pip3 install --user empy
+pip3 install --user packaging
+pip3 install --user numpy
+```
+- Now you can build and run the simulation
 ```
 make px4_sitl gazebo
 ```
