@@ -20,3 +20,7 @@ add_dependencies(takeoff_example ${catkin_EXPORTED_TARGETS})
 add_executable(land_example src/land_node.cpp)
 target_link_libraries(land_example ${catkin_LIBRARIES})
 add_dependencies(land_example ${catkin_EXPORTED_TARGETS})
+
+add_executable(takeoff_land_example src/land_takeoff_node.cpp)
+target_link_libraries(takeoff_land_example ${catkin_LIBRARIES})
+add_dependencies(takeoff_land_example ${catkin_EXPORTED_TARGETS})
