@@ -28,7 +28,7 @@ A small preview of how this simulation works is in the diagram below:
 ```
 sudo apt-get install ros-version-mavros ros-version-mavros-extras
 ```
--	Replace version above with your version of mavros. for example if you are using noetic, use *ros-version-mavros*
+-	Replace version above with your version of mavros. for example if you are using noetic, use *ros-noetic-mavros*. If you don't know then you can use ```rosversion -d```
 -	Next you are going to need to get the geagraphic lib, you need this for mavros so that you can send long/lat. The command is below:
 ```
 wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
@@ -39,7 +39,7 @@ sudo ./install_geographiclib_datasets.sh
 -	The px4 firmware is what is need to simulate the flight controller, and ROS is what is going to be controlling the simulated flight controller.
 -	To install the px4 firmware you can fork the repository from our github page or just pull it if you aren't planning on messing with the firmware code, the command is below:
 ```
-git clone git@github.com:UNL-UAV/Firmware.git
+git clone https://github.com/UNL-UAV/Firmware.git
 cd Firmware
 ```
 -	next you are going to have to install some package dependencies so that you can make the simulation px4 flight controller, please run the commands below to be able to build.
@@ -49,8 +49,21 @@ sudo apt-get install libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad g
 ```
 -	Now you can run the simulation by using the command below (be sure you're in the Firmware directory that was pulled from Github). It is going to take a really long time to build the first time but afterwards it shouldn't take super long.
 -   Also there might be errors that come up because of some other dependencies that weren't included in the installation process, they should all be explicit instructions to install a certain dependency, you should be able to follow the error and resolve it.
+- You are going to need to also install a bunch of python dependencies using pip, you can install all of them by using the commands below:
+```
+pip3 install --user toml
+pip3 install --user empy
+pip3 install --user packaging
+pip3 install --user numpy
+```
+- Now you can build and run the simulation
 ```
 make px4_sitl gazebo
+```
+- Now after the all of the code is done compiling you can go ahead and clone this repository if you haven't already.
+- This repository contains all of the example code that is used in the simulation. It is a catkin workspace that you can add to and also has examples that you can run using ROS.
+```
+git clone https://github.com/UNL-UAV/mavROS-Simulation.git
 ```
 
 ### Directions for Running
