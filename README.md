@@ -80,7 +80,7 @@ make px4_sitl gazebo
 ```
 roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"
 ```
--   Then you can run nodes to control your drone. At thsis point all the information between ROS and the sitl pixhawk should be working. This means that you can not run nodes to populate topics to control the drone. If you have not already built nodes, there is an example takeoff already supplied in the repository.
+-   Then you can run nodes to control your drone. At this point all the information between ROS and the sitl pixhawk should be working. This means that you can now run nodes to populate topics to control the drone. If you have not already built nodes, there is an example takeoff already supplied in the repository.
 -   To run the takeoff node you have to move to this repository, ..../mavROS-Simulation then run the commands below.
 -   If for some reason the code does not compile after catkin_make, check the CMakeLists.txt to make sure the right version of everything is included.
 ```

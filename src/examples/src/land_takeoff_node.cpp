@@ -24,7 +24,7 @@ geometry_msgs::PoseStamped takeoff_land(const ros::Duration &cur_time){
     else if(mod_t < 30){
         xpos = 0;
         ypos = 0;
-        zpos = 1 - (mod_t/15);
+        zpos = 1 - ((mod_t - 15)/15);
     }
     next_pos.pose.position.x = xpos;
     next_pos.pose.position.y = ypos;
@@ -60,13 +60,6 @@ int main(int argc, char **argv)
     pose.pose.position.y = 0;
     pose.pose.position.z = 0;
 
-    //send a few setpoints before starting
-    for(int i = 10; ros::ok() && i > 0; --i){
-        local_pos_pub.publish(pose);
-        ros::spinOnce();
-        rate.sleep();
-    }
-
     mavros_msgs::SetMode offb_set_mode;
     offb_set_mode.request.custom_mode = "OFFBOARD";
 
@@ -75,6 +68,8 @@ int main(int argc, char **argv)
 
     ros::Time last_request = ros::Time::now();
     init_time = ros::Time::now();
+
+
 
     while(ros::ok()){
         if( current_state.mode != "OFFBOARD" &&
